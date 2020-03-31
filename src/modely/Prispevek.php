@@ -69,4 +69,35 @@ class Prispevek
 
         return $prispevky;
     }
+
+    static public function dataUpravit($id){
+
+        $spojeni = DB::pripojit();
+
+        $dotaz = "SELECT * FROM 3ep_sk2_php_mvc_prispevky WHERE id = '$id'";
+        $vysledek = mysqli_query($spojeni, $dotaz);
+        $data = mysqli_fetch_assoc($vysledek);
+        $id = $data["id"];
+        $nadpis = $data["nadpis"];
+        $obsah = $data["obsah"];
+        $data = new stdClass();
+        $data->id = $id;
+        $data->nadpis = $nadpis;
+        $data->obsah = $obsah;
+        return json_encode($data);
+
+    }
+
+    static public function upravit($id, $nadpis, $obsah){
+        $spojeni = DB::pripojit();
+        $dotaz = "UPDATE 3ep_sk2_php_mvc_prispevky SET nadpis = '$nadpis',obsah = '$obsah' WHERE id = $id";
+        $vysledek = mysqli_query($spojeni, $dotaz);
+
+    }
+
+    static public function smazat($id){
+        $spojeni = DB::pripojit();
+        $dotaz = "DELETE FROM 3ep_sk2_php_mvc_prispevky WHERE id = $id";
+        $vysledek = mysqli_query($spojeni, $dotaz);
+    }
 }

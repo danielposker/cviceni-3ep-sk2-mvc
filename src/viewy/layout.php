@@ -17,7 +17,7 @@
     </header>
     <?php require_once "router.php"; ?>
     <footer>
-        <p>&copy; 2020 Jakub Šenkýř</p>
+        <p>&copy; 2020 Jakub Šenkýř, Daniel Posker</p>
     </footer>
 </body>
 </html>
